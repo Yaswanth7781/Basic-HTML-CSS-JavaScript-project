@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Anagram Checker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Anagram Checker</h2>
+    <input type="text" id="str1" placeholder="Enter first string">
+    <input type="text" id="str2" placeholder="Enter second string">
+    <button onclick="checkAnagram()">Check</button>
+    <div class="result" id="result"></div>
+  </div>
+
+  <script>
+    function isAnagram(s, t) {
+      let ch = t.split('');
+      let ch1 = s.split('');
+      if (ch.length !== ch1.length) {
+        return false;
+      }
+      ch.sort();
+      ch1.sort();
+      for (let i = 0; i < ch.length; i++) {
+        if (ch[i] !== ch1[i]) {
+          return false;
+        }
+      }
+      return true;
+    }
+
+    function checkAnagram() {
+      const str1 = document.getElementById("str1").value;
+      const str2 = document.getElementById("str2").value;
+      const resultDiv = document.getElementById("result");
+
+      if (isAnagram(str1, str2)) {
+        resultDiv.textContent = "Yes, they are anagrams!";
+        resultDiv.style.color = "green";
+      } else {
+        resultDiv.textContent = "No, they are not anagrams.";
+        resultDiv.style.color = "red";
+      }
+    }
+  </script>
+</body>
+</html>
